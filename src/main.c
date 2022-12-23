@@ -11,12 +11,13 @@ int main(int argc, char **argv)
 
   int socket = 0;
 
-  printf("Starting Server");
   
 
   socket = initServer();
 
-  printf("SOcket is : %d\n", socket);
+
+  printf("Starting Server");
+  startServer(socket);
 
   return (0);
 }

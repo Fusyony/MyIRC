@@ -25,7 +25,7 @@ int initServer(void)
   }
 
 
-  listen(socketFD, 5);
+  listen(socketFD, MAX_CONNECTION);
 
   return (socketFD);
 
