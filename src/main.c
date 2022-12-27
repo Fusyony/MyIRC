@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
   socket = initServer();
 
-  write(1, "[SERVER] : Server is UP\n", 25);
+  write(1, "[SERVER] : Server is up\n", 25);
 
   startServer(socket);
 

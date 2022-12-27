@@ -34,6 +34,7 @@ char *readContent(int fd)
             return (NULL);
         }
     }
+    buff[strlen(buff)-1] = 0; // remove newline character
     return (buff);
 }
 
@@ -47,8 +48,14 @@ void manageInput(users_t **list, fd_set read_fds)
             input = readContent(ptr->fd);
             if (input == NULL) {
                 popClient(list, ptr->fd);
+            } else if (!ptr->name) {
+                ptr->name = input;
+                printf("[NEW USER] : %s\n", ptr->name);
+                return; // return for cancel the free
+            } else {
+                printf("[%s]->%s\n",ptr->name, input);
+                sendAll(list, ptr->fd, input, ptr->name);
             }
-            printf("[USER] : %s\n", input);
             break;
         }
     }
@@ -69,11 +76,11 @@ int startServer(int serverFD)
         if (FD_ISSET(serverFD, &read_fds)) {
             newfd = accept(serverFD, (struct sockaddr *) &cli, &client);
             pushBack(newfd, &list);
-            write(newfd, "Welcome to my IRC SERVER\n", 27);
+            write(newfd, "Welcome to my IRC SERVER\n", 26);
+            write(newfd, "Please Enter your username : ", 30);
         } else {
             manageInput(&list, read_fds);
         }
-        display(list);
     }
     clearList(list);
     return (0);

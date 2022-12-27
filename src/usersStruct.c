@@ -6,7 +6,8 @@ users_t *createNode(void)
     users_t *users = malloc(sizeof(users_t));
 
     users->fd = 0;
-    users->next = 0;
+    users->next = NULL;
+    users->name = NULL;
     return (users);
 }
 

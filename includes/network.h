@@ -5,7 +5,7 @@
 #include <sys/select.h>
 
 
-#define PORT 8003
+#define PORT 8009
 #define MAX_CONNECTION 100
 
 typedef struct users_s users_t;
@@ -13,8 +13,12 @@ typedef struct users_s users_t;
 struct users_s
 {
     int fd;
+    char *name;
     struct users_s *next;
 };
+
+// display.c
+void sendAll(users_t **list, int fd, char *input, char *username);
 
 // initServer.c
 int initServer(void);
