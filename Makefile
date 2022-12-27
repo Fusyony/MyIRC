@@ -1,6 +1,6 @@
 ##
 ##	Makefile
-##  use make for compiling the project 
+##  use make to compile the project 
 ##  needed [gcc, make] binary
 ##
 
@@ -10,7 +10,7 @@ NAME	=	ftp
 
 ## Compile info
 CC	=	gcc
-CFLAGS	= -Werror -Wextra -Wall
+CFLAGS	= -Wextra -Wall -g3
 
 ## include
 LDIR	=	-I includes/

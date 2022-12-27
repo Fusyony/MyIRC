@@ -1,2 +1,3 @@
-# MyFTP
-Recrate an FTP server
+# MyIRC
+
+This is an IRC server
